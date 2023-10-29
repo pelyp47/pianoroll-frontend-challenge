@@ -21,8 +21,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
+  min-height: 10vh;
   background-color: #154151;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);  /* optional drop shadow */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10vh;
+  padding: 10vh;
 }
 
 .logo-container img {
@@ -31,14 +41,22 @@ body {
   fill: white;
 }
 
-#pianoRollContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.main__header {
+  margin-bottom: 20px;
+}
+
+/*refactor: replaced id with class*/
+.pianoRollContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(250px, 33%), 1fr));/**up to three columns with width no less than 250px**/
+  grid-gap: 5px;
+
+  /*prefixes to support older browsers*/
+  display: -ms-grid;
+  display: -moz-grid;
 }
 
 h1 {
-  margin-bottom: 20px;
   font-size: 42px;
 }
 
@@ -51,16 +69,14 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
   border-radius: 5px;
-}
-
-button {
-  /* ... existing button styles ... */
+  /* styles for transform animation */
   border-bottom: 3px solid #381815;  /* A darker shade for 3D effect */
   position: relative;  /* Required for the top movement on hover */
   transition: all 1.1s ease;  /* Transition for all properties */
 }
 
-#buttonContainer {
+/*refactor: replaced id with class*/
+.buttonContainer {
   display: flex;
   justify-content: center;
 }
@@ -75,9 +91,7 @@ button:hover {
 
 .piano-roll-card {
   border: 1px solid #ccc;
-  margin-bottom: 10px;
   padding: 10px;
-  width: 50%;
   box-sizing: border-box;
 }
 
