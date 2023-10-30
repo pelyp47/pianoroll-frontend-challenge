@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Mulish', sans-serif;
   cursor: default;
@@ -11,10 +15,10 @@ body {
   color: #1C1C1A;
   height: 100vh; /* Use viewport height instead of 100% to occupy full screen height */
   text-align: center;
-  overflow: auto;
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: height .3s;
 }
 
 .navbar {
@@ -87,17 +91,19 @@ button:hover {
 
 
 .piano-roll-card {
-  border: 1px solid #ccc;
+  border: 1px solid #919191;
   padding: 10px;
-  box-sizing: border-box;
 }
 
 .piano-roll-svg {
-  border: 2px solid #381815;
+  border-right: 2px solid #381815;
+  border-left: 2px solid #381815;
+  border-top: .5px solid #381815;
+  border-bottom: .52px solid #381815;
 }
 
 .description {
-  margin-top: 10px;
+  margin: 10px;
 }
 
 /*styles for when main card is selected*/
