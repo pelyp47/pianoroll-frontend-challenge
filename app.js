@@ -18,9 +18,24 @@ class PianoRollDisplay {
     }
   }
 
+  static mainCard
+
+  updateMainCard(card) {
+    //check if mainCard is defined, if yes - remove class _main
+    if(PianoRollDisplay.mainCard) PianoRollDisplay.mainCard.classList.remove("_main")
+    
+    card.classList.add("_main")
+    PianoRollDisplay.mainCard = card
+  }
+
   preparePianoRollCard(rollId) {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('piano-roll-card');
+
+    //update main card value on click
+    cardDiv.addEventListener("click", (event)=>{
+      this.updateMainCard(cardDiv)
+    })
 
     // Create and append other elements to the card container as needed
     const descriptionDiv = document.createElement('div');
@@ -36,7 +51,7 @@ class PianoRollDisplay {
     // Append the SVG to the card container
     cardDiv.appendChild(svg);
 
-    return { cardDiv, svg }
+    return { cardDiv, svg };
   }
 
   async generateSVGs() {
@@ -50,7 +65,7 @@ class PianoRollDisplay {
       const end = start + 60;
       const partData = this.data.slice(start, end);
 
-      const { cardDiv, svg } = this.preparePianoRollCard(it)
+      const { cardDiv, svg } = this.preparePianoRollCard(it);
 
       pianoRollContainer.appendChild(cardDiv);
       const roll = new PianoRoll(svg, partData);

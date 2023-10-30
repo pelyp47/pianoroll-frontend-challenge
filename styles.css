@@ -50,7 +50,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(max(250px, 33%), 1fr));/**up to three columns with width no less than 250px**/
   grid-gap: 5px;
-
+  grid-auto-rows: 1fr;
   /*prefixes to support older browsers*/
   display: -ms-grid;
   display: -moz-grid;
@@ -85,9 +85,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-.piano-roll-svg {
-  border: 2px solid #381815;
-}
 
 .piano-roll-card {
   border: 1px solid #ccc;
@@ -95,6 +92,22 @@ button:hover {
   box-sizing: border-box;
 }
 
+.piano-roll-svg {
+  border: 2px solid #381815;
+}
+
 .description {
   margin-top: 10px;
 }
+
+/*styles for when main card is selected*/
+.pianoRollContainer:has(._main) * {
+  grid-column: -2/ span 1;
+}
+
+.piano-roll-card._main {
+  order: -1;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+

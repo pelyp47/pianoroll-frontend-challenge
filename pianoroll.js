@@ -26,7 +26,7 @@ export default class PianoRoll {
 
     this.svgElement.setAttribute("viewBox", "0 0 1 1");
     this.svgElement.setAttribute("preserveAspectRatio", "none");
-    this.drawPianoRoll(sequence)
+    this.drawPianoRoll(sequence);
   }
 
   timeToX(time) {
@@ -34,11 +34,11 @@ export default class PianoRoll {
   }
 
   drawPianoRoll(sequence) {
-    this.start = sequence[0].start
-    this.end = sequence[sequence.length - 1].end - this.start
+    this.start = sequence[0].start;
+    this.end = sequence[sequence.length - 1].end - this.start;
     // Extract just the pitches to prepare the SVG parameters
     const pitches = sequence.map(note => {
-      return note.pitch
+      return note.pitch;
     })
 
     // Make it at lest 2 octaves (2 * 12)
@@ -59,7 +59,7 @@ export default class PianoRoll {
     pitch_max += 3;
     pitch_span = pitch_max - pitch_min;
     this.note_height = 1 / pitch_span;
-    this.drawEmptyPianoRoll(pitch_min, pitch_max)
+    this.drawEmptyPianoRoll(pitch_min, pitch_max);
 
     sequence.forEach((note) => {
       const note_rectangle = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
@@ -81,10 +81,10 @@ export default class PianoRoll {
       const color = this.noteColormap[note.velocity];
       note_rectangle.setAttribute('fill', color);
 
-      note_rectangle.classList.add('note-rectangle')
+      note_rectangle.classList.add('note-rectangle');
 
       // Draw it
-      this.svgElement.appendChild(note_rectangle)
+      this.svgElement.appendChild(note_rectangle);
     }
     )
   }
